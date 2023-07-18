@@ -181,14 +181,14 @@ Use this BibTeX to cite this repository:
 Previous work
 
 
-@inproceedings{beghdadi2022benchmarking,
-  title={Benchmarking performance of object detection under image distortions in an uncontrolled environment},
-  author={Beghdadi, Ayman and Mallem, Malik and Beji, Lotfi},
-  booktitle={2022 IEEE International Conference on Image Processing (ICIP)},
-  pages={2071--2075},
-  year={2022},
-  organization={IEEE}
-}
+    @inproceedings{beghdadi2022benchmarking,
+      title={Benchmarking performance of object detection under image distortions in an uncontrolled environment},
+      author={Beghdadi, Ayman and Mallem, Malik and Beji, Lotfi},
+      booktitle={2022 IEEE International Conference on Image Processing (ICIP)},
+      pages={2071--2075},
+      year={2022},
+      organization={IEEE}
+    }
 
 
 
