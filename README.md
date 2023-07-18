@@ -41,12 +41,14 @@ Requirements
 - **MATLAB R2021a**
 - **MS-COCO dataset: validation and train sets (corresponding images and instances annotations)**
     - https://cocodataset.org/#download  
-- **Instances annotations converted in a Matlab matrix:**
+- **Instances annotations converted in a Matlab matrix to generate CD-COCO dataset:**
     - **(train set):** https://drive.google.com/file/d/1vduixQEHJxMvdU0kaJ8GtiLkeqPE7i2L/view?usp=sharing
     - **(validation set):** https://drive.google.com/file/d/1yqHBH7kJfBWh7uG_r40P507wYWXdnjOy/view?usp=sharing
 - **Generated distorted datasets (if you dont want to generate them yourself):**
-    - **(train set):** https://drive.google.com/file/d/1-oNNJUwfXOlM222g84t6ZM2U5GmbkUoo/view?usp=sharing
-    - **(validation set):**
+    - **(image train set):** https://drive.google.com/file/d/1icqFD7MoLghg8PliNW_THCNiTfwae70b/view?usp=sharing
+    - **(annotation train set):** https://drive.google.com/file/d/1JrI2JML5D8koexqi2AnlB0_QFariFfbY/view?usp=sharing
+    - **(validation set):** https://drive.google.com/file/d/1aY3kXbH_HRu7YK7JfmnK4Xho5ToSxnkQ/view?usp=sharing
+    - **(annotation validation set):** https://drive.google.com/file/d/1ju3Td425OTyvyCDonQnWGHDdXmF8aumE/view?usp=sharing
     - **(Local server for all data):** https://www.l2ti.univ-paris13.fr/VSQuad/CD-COCO_ICIP2023_Challenge/ 
 
 
