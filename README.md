@@ -1,14 +1,14 @@
 # CD-COCO: Complex Distorted COCO database for Scene-Context-Aware computer vision
 
 Here is an original strategy of image distortion generation applied to the MS-COCO dataset that combines some local and global distortions to reach a better realism. We have shown that training with this distorted dataset improves the robustness of models by 31.5% approximately through this full framework evaluation and training. This repository is summarized as follow:
-- [Overview]([https://github.com/Aymanbegh/Benchmarking-performance#overview](https://github.com/Aymanbegh/CD-COCO/tree/main#overview)): brief presentation of this framework evaluation of robustness
-- [Image Distortions](https://github.com/Aymanbegh/Benchmarking-performance#image-distortions): presents the main concept about image distortion
-- [Requirements](https://github.com/Aymanbegh/Benchmarking-performance#requirements): gives global dependencies information and links
-- [Distorted dataset generation](https://github.com/Aymanbegh/Benchmarking-performance#distorted-dataset-generation): provides a tutorial about the distorted dataset generation
-- [Training results](https://github.com/Aymanbegh/Benchmarking-performance#training-results): explains how to perform a training through YOLOv4 method (YOLOv4 or YOLOv4-tiny) and how to evaluate the robustness of the trained model.
-- [Citation](https://github.com/Aymanbegh/Benchmarking-performance#citation): BibTeX to cite this repository and the corresponding paper
+- [Overview](https://github.com/Aymanbegh/CD-COCO#overview): brief presentation of this framework evaluation of robustness
+- [Image Distortions](https://github.com/Aymanbegh/CD-COCO#image-distortions): presents the main concept about image distortion
+- [Requirements](https://github.com/Aymanbegh/CD-COCO#requirements): gives global dependencies information and links
+- [Distorted dataset generation](https://github.com/Aymanbegh/CD-COCO#distorted-dataset-generation): provides a tutorial about the distorted dataset generation
+- [Training results](https://github.com/Aymanbegh/CD-COCO#training-results): explains how to perform a training through YOLOv4 method (YOLOv4 or YOLOv4-tiny) and how to evaluate the robustness of the trained model.
+- [Citation](https://github.com/Aymanbegh/CD-COCO#citation): BibTeX to cite this repository and the corresponding paper
 
-**Codes of evaluation and training tasks are fully provided as well as distorted dataset.**
+
 
 
 Overview
@@ -44,20 +44,17 @@ Requirements
 - **Instances annotations converted in a Matlab matrix:**
     - **(train set):** https://drive.google.com/file/d/1vduixQEHJxMvdU0kaJ8GtiLkeqPE7i2L/view?usp=sharing
     - **(validation set):** https://drive.google.com/file/d/1yqHBH7kJfBWh7uG_r40P507wYWXdnjOy/view?usp=sharing
-    - **(validation set MS-COCO 2014 for MASK-RCNN):** https://drive.google.com/file/d/1yqHBH7kJfBWh7uG_r40P507wYWXdnjOy/view?usp=sharing
 - **Generated distorted datasets (if you dont want to generate them yourself):**
     - **(train set):** https://drive.google.com/file/d/1-oNNJUwfXOlM222g84t6ZM2U5GmbkUoo/view?usp=sharing
-    - **(validation set): 3 links for MS-COCO 2017**
-        - part1 (Blur, Compression, Contrast, Defocus): https://drive.google.com/file/d/1EsljL-cN-DpUKmn9w02WbkJiFta4aDBB/view?usp=sharing
-        - part2 (Noise): https://drive.google.com/file/d/1VBy1i37uCLYl3Ew5p2Qu0PVGck8f3r8s/view?usp=sharing
-        - part3 (others): https://drive.google.com/file/d/1V6_5vXR5vnfMhyhspOW4lM75cAKh2Vk-/view?usp=sharing
+    - **(validation set):**
+    - **(Local server for all data):** https://www.l2ti.univ-paris13.fr/VSQuad/CD-COCO_ICIP2023_Challenge/ 
 
 
-Distorted dataset generation
+Distorted dataset generation 
 -----------------------------------
-Distortions are applied to 2 sets from the MS-COCO 2017 dataset => train (118K images) and validation (5K images) sets. 
-**You generate yourself your COCO distorted dataset for the train and evaluation sets thanks to the following functions. Otherwise, you can download directly download our distorted dataset: (train set: GB) and (validation set: GB)**
-- **Validation set**: We apply the 10 types of distortions on all images from the validation set of MS-COCO (5K images) through 10 distortion levels specified in each respective generation function ("distortion_*distortion_name*.m"). The values of distortions are giver directly in each specific distortion function ("dist_*distortion_name*.m"). All of these functions, present in the **Distortions_validation** folder, are in the following tree structure:
+Distortions are applied to 2 sets from the MS-COCO 2017 dataset => train (95K images) and validation (5K images) sets. 23K images are dedicated for the test set.
+**You generate yourself your CD-COCO distorted dataset for the train and evaluation sets thanks to the following functions. Otherwise, you can download directly download our distorted dataset: (train set: GB) and (validation set: GB)**
+- **Validation set**: We apply the 10 types of distortions on all images from the validation set of MS-COCO (5K images) through each respective generation function ("distortion_*distortion_name*.m"). The values of distortions are giver directly in each specific distortion function ("dist_*distortion_name*.m"). All of these functions, present in the **Distortions_validation** folder, are in the following tree structure:
 
     ```
   Distortions_validation
@@ -95,21 +92,7 @@ To generate the desired distortion, comment or uncomment the lines of functions 
     dist_contraste(imgval_path,path_annotation,outputFolder);
     dist_noise(imgval_path,path_annotation,outputFolder);
     
-The distorted images are as the following tree structure:   
-
-      ```
-      outputFolder: path given in the main script that described the output folder
-      ├── noise
-          └── Level 1 of distortion (value)
-          ...
-          ...
-          └── Level 10 of distortion (value)
-      ├── Next distortion  
-          └── Level 1 of distortion (value)
-          ...
-          ...
-          └── Level 10 of distortion (value)   
-         ```  
+ 
          
 Training results [Previous work](https://github.com/Aymanbegh/Benchmarking-performance#overview)
 -----------------------------------
@@ -194,7 +177,10 @@ Citation
 -----------------------------------
 
 Use this BibTeX to cite this repository:
+
 Previous work
+
+
 @inproceedings{beghdadi2022benchmarking,
   title={Benchmarking performance of object detection under image distortions in an uncontrolled environment},
   author={Beghdadi, Ayman and Mallem, Malik and Beji, Lotfi},
