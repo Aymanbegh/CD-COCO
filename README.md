@@ -56,29 +56,29 @@ Distorted dataset generation
 -----------------------------------
 Distortions are applied to 2 sets from the MS-COCO 2017 dataset => train (95K images) and validation (5K images) sets. 23K images are dedicated for the test set.
 **You generate yourself your CD-COCO distorted dataset for the train and evaluation sets thanks to the following functions. Otherwise, you can download directly download our distorted dataset: (train set: GB) and (validation set: GB)**
-- **Validation set**: We apply the 10 types of distortions on all images from the validation set of MS-COCO (5K images) through each respective generation function ("distortion_*distortion_name*.m"). The values of distortions are giver directly in each specific distortion function ("dist_*distortion_name*.m"). All of these functions, present in the **Distortions_validation** folder, are in the following tree structure:
 
-    ```
-  Distortions_validation
-  ├── Distortions functions
-      └──distortion_*distortion_name*.m : function that generate the distortion specified by *distortion_name*
-  ├── dist_*distortion_name*.m: functions that call each respective functions in the folder "Distortions functions" 
-  ├── main.m: main script that calls all dist_*distortion_name*.m functions
-  ```
 **Download the Rain and Haze images sources to generate these distortion**: https://drive.google.com/drive/folders/1PDlCD63W8myRbsaJTRjwYBVlt8X2uwaA?usp=sharing  
 Paths to directories from the main script need to be modified in order to indicate the correct paths for the image source, the annotations sources and the desired output directories.
 
+- **Distortion generation**: First, change the following folders pathes in the **Main_application.m** file with yours: 
+
     %% Paths to directories
-    %Path to validation set images from COCO 2017
-    imgval_path='C:\Users\beghd\OneDrive\Bureau\Dataset\COCO\val2017';
-    %Path to validation set annotations from COCO 2017
-    path_annotation =('C:\Users\beghd\OneDrive\Bureau\Dataset\COCO\annotations_unpacked_valfull2017\matFiles');
+    %Path to train/validation set images from COCO 2017
+    imgtrain_path='C:\Users\beghd\OneDrive\Bureau\Dataset\COCO\train2017';
+    %Path to train/validation set annotations from COCO 2017
+    path_annotation =('C:\Users\beghd\OneDrive\Bureau\Dataset\COCO\annotations_unpacked\annotations_unpacked\matFiles');
     %Path to output directory where distortions are generated
-    outputFolder=('C:\Users\beghd\OneDrive\Bureau\Dataset\COCO\val2017_d1/');
+    outputFolder='C:\Users\beghd\OneDrive\Bureau\Dataset\COCO\train2017_distorted/';
+    %Path to depth directory:
+    Depth_location="C:\Users\beghd\OneDrive\Bureau\Dataset\COCO\Depth_train\output/";
     %Path to the rain masks to apply for the rain distortion
-    rainFolder=('C:\Users\beghd\OneDrive\Bureau\Distortions\video extraction\rain5/');
+    rainFolder=('C:\Users\aymanaymar.beghdadi\Desktop\Distortions\video extraction\rain6/');
     %Path to the haze masks to apply for the haze distortion
-    hazeFolder=('C:\Users\beghd\OneDrive\Bureau\Distortions\video extraction\fog1/');
+    hazeFolder=('C:\Users\aymanaymar.beghdadi\Desktop\Distortions\video extraction\fog1/');
+
+Select the adapted matlab annotation file (find in foler Annotation):
+load("scene_anntotation.mat","Scene");
+
     
 To generate the desired distortion, comment or uncomment the lines of functions in the "main.m" script:
 
