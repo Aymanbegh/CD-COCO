@@ -21,6 +21,6 @@ end
 
 %writing image
 outputname = sprintf('%s',name_in);
-imwrite(imG_out, [outputFolder outputname]);
+imwrite(imG_out, [outputFolder outputname],"Quality",95);
 distortion = "Local Backlight";
 end

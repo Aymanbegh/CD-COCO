@@ -31,6 +31,6 @@ imG_out(:,:,:) = (imG - min(imG(:))) ./ max(imG(:));
 outputname = sprintf('%s',name);
 % 
 % outputdir = [outputFolder outputnames];
-imwrite(imG_out, [outputFolder outputname]);
+imwrite(imG_out, [outputFolder outputname],"Quality",95);
 distortion = "Global motion blur";
 end

@@ -1,4 +1,4 @@
-function [distortion, imG_back] = Global_rain(Name,Drizzle_up,I,Rain,data,alpha,outputFolder)
+function [distortion, imG_back] = Global_rain(Name,D,I,Rain,data,alpha,outputFolder)
 addpath('./Distortions functions');
 addpath('./Defocus local functions');
 
@@ -90,8 +90,9 @@ se2 = strel('line',2,1);
 erodedBW1 = imerode(Mid_Rain,se1);
 BW3 = imdilate(erodedBW1,se1);
 
-Drizzle=Mid_Rain-BW3;
-Drizzle_up = imdilate(Drizzle,se2);
+GG=Mid_Rain-BW3;
+G1 = imdilate(GG,se2);
+IF= BW2 + BW3 +GG;
 % IF= BW2 + BW3 +Drizzle;
 
 
@@ -117,16 +118,17 @@ end
 % alpha = 5.5;
 
 %% Apply the rain masks according to alpha value
-width = size(Drizzle_up,2);
-height = size(Drizzle_up,1);
+width = size(D,2);
+height = size(D,1);
 Ifront = imresize(BW2,[height width]);
 Imiddle = imresize(BW3,[height width]);
-Iback = imresize(Drizzle,[height width]);
+Iback = imresize(GG,[height width]);
+IF1 = imresize(IF,[height width]);
 % IF1 = imresize(IF,[height width]);
 
 % Applying on the forground
-Rain = 1 - (1 - im2double(Drizzle_up)).*(1 - alpha*im2double(Ifront));
-imG_front= im2uint8(Rain);
+R = 1 - (1 - im2double(D)).*(1 - alpha*im2double(Ifront));
+imG_front= im2uint8(R);
 
 % Applying on the front objects
 Imd = 1 - (1 - im2double(imG_front)).*(1 - alpha*im2double(Imiddle));
@@ -135,8 +137,10 @@ for i=1:size(I,1)
     for j=1:size(I,2)
         if(front(i,j)==1)
             imG_mid(i,j,1)=imG_front(i,j,1);
-            imG_mid(i,j,2)=imG_front(i,j,2);
-            imG_mid(i,j,3)=imG_front(i,j,3);
+            if(size(I,3)>1)
+                imG_mid(i,j,2)=imG_front(i,j,2);            
+                imG_mid(i,j,3)=imG_front(i,j,3);
+            end
 
         end
     end
@@ -150,9 +154,10 @@ for i=1:size(I,1)
     for j=1:size(I,2)
         if((middle(i,j)==1)||(front(i,j)==1))
             imG_back(i,j,1)=imG_mid(i,j,1);
-            imG_back(i,j,2)=imG_mid(i,j,2);
-            imG_back(i,j,3)=imG_mid(i,j,3);
-            
+            if(size(I,3)>1)
+                imG_back(i,j,2)=imG_mid(i,j,2);
+                imG_back(i,j,3)=imG_mid(i,j,3);
+            end
         end
     end
 end
@@ -160,6 +165,6 @@ end
 
 
 outputname = sprintf('%s',name_in);
-imwrite(imG_back, [outputFolder outputname]);
+imwrite(imG_back, [outputFolder outputname],"Quality",95);
 distortion ="rain";
 end

@@ -26,6 +26,6 @@ function [distortion, imG_out] = distortion_noise(imgin,name,mean,variance,outpu
     imG = double(obj(:,:,:));
     imG_out(:,:,:) = (imG - min(imG(:))) ./ max(imG(:));
     outputname = sprintf('%s',name);
-    imwrite(imG_out, [outputFolder outputname]);
+    imwrite(imG_out, [outputFolder outputname],"Quality",95);
     distortion ="noise";
 end

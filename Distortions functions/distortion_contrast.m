@@ -21,7 +21,7 @@ imG_out =imadjust(imgin,contraste,[]);
 
 %% Contrast
 outputname = sprintf('%s',name_in);
-imwrite(imG_out, [outputFolder outputname]);
+imwrite(imG_out, [outputFolder outputname],"Quality",95);
 distortion="contrast";
 
 end

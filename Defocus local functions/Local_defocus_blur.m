@@ -19,7 +19,7 @@ function [distortion, Dout] = Local_defocus_blur(Name,I,D,data,outputFolder)
         Dout = imgaussfilt(D,sigma*0.1,'FilterSize',11);
         name=Name;
         outputname = sprintf('%s',name);
-        imwrite(uint8(Dout), [outputFolder outputname]);
+        imwrite(uint8(Dout), [outputFolder outputname],"Quality",95);
         distortion = "Global defocus blur";
 
     else
@@ -160,7 +160,7 @@ function [distortion, Dout] = Local_defocus_blur(Name,I,D,data,outputFolder)
             
     
             % Manage pixels value acoording to areas and depth
-            if(threshold>100 || object_depth(index(1))>100)
+            if(threshold>95 || object_depth(index(1))>95)
                 for i=1:size(I,1)
                     for j=1:size(I,2)
                         if(normal(i,j)==255)
@@ -199,7 +199,7 @@ function [distortion, Dout] = Local_defocus_blur(Name,I,D,data,outputFolder)
             % Write image
             name=Name;
             outputname = sprintf('%s',name);
-            imwrite(uint8(Dout), [outputFolder outputname]);
+            imwrite(uint8(Dout), [outputFolder outputname],"Quality",95);
             distortion = "Local defocus blur";
         else
             % Apply a global defocus blur is sigma is infinite
@@ -207,7 +207,7 @@ function [distortion, Dout] = Local_defocus_blur(Name,I,D,data,outputFolder)
             Dout = imgaussfilt(D,sigma*0.1,'FilterSize',11);
             name=Name;
             outputname = sprintf('%s',name);
-            imwrite(uint8(Dout), [outputFolder outputname]);
+            imwrite(uint8(Dout), [outputFolder outputname],"Quality",95);
             distortion = "Global defocus blur";
 
         end

@@ -21,7 +21,7 @@ function [distortion, imG_out] = Local_blur_motion(Name,I,D,data,outputFolder,sc
         imG_out = imfilter(D,blur_motion_filter,'replicate');   % Add motion blur 
         name = Name;
         outputname = sprintf('%s',name);
-        imwrite(imG_out, [outputFolder outputname]);
+        imwrite(imG_out, [outputFolder outputname],"Quality",95);
         distortion = "Global motion blur";
 
     else
@@ -108,7 +108,7 @@ function [distortion, imG_out] = Local_blur_motion(Name,I,D,data,outputFolder,sc
             imG_out = imfilter(D,blur_motion_filter,'replicate');   % Add motion blur 
             name = Name;
             outputname = sprintf('%s',name);
-            imwrite(imG_out, [outputFolder outputname]);
+            imwrite(imG_out, [outputFolder outputname],"Quality",95);
             distortion = "Global motion blur";
         else
             % Apply the local distortion

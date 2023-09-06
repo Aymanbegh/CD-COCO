@@ -3,7 +3,12 @@ function [distortion, imG_out] = Global_contraste(Name, D,contrast,outputFolder)
     Image_end=".jpg";
     name_in = Name+Image_end;
     
-    G = rgb2gray(D);
+    if(size(D,3)==3)
+        G = rgb2gray(D);
+    else 
+        G=D; 
+    end
+    
     Mean_img = mean(mean(double(G)));
 
     if(Mean_img<80)

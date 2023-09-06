@@ -31,6 +31,6 @@ D = (1 - (1 - D_).*(1 - (alpha_ratio.*Ifront_))).*255;
 imG_out= uint8(D);
 
 outputname = sprintf('%s',name_in);
-imwrite(imG_out, [outputFolder outputname]);
+imwrite(imG_out, [outputFolder outputname],"Quality",95);
 distortion ="haze";
 end

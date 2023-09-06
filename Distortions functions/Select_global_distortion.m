@@ -1,6 +1,6 @@
-function Global_distortion_choice = Select_global_distortion(Scene)
+function Global_distortion_choice = Select_global_distortion(Scene,Global_distortion_choice)
 
-Global_distortion_choice = zeros(size(Scene,2),1);
+% Global_distortion_choice = zeros(size(Scene,2),1);
 
 cpt_g=0;
 for id=1:size(Scene,2)
@@ -23,7 +23,9 @@ for id=1:size(Scene,2)
             Global_distortion_choice(id,1)=choice_distortion(cpt,1);
         end
         cpt=cpt+1;
-    end    
+    else
+        Global_distortion_choice(id,1)=0;
+    end
 end
 
 

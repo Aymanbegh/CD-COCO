@@ -228,7 +228,7 @@ for id=1:size(Image.ID,2)
 %     figure(12)
 %     imshow(uint8(Dout))
     
-    Destination=".\ImageDefocus\";
+    Destination=".\ImageDefocus3\";
     Name_img = Destination+Name + Image_end;
     imwrite(uint8(Dout),Name_img)
 
