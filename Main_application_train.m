@@ -19,20 +19,20 @@ addpath('./Other functions');
 
 %% Path declarations for COCO dataset
 % Dataset image for the training
-imgtrain_path='./val2017';
+imgtrain_path='./train2017';
 %Add path
 addpath(imgtrain_path);
 
 %% Path declaration for the output distortion directory
 % Dataset of the distorted image for the training
-outputFolder='./val2017_distorted/';
+outputFolder='./train2017_distorted/';
 % Add path
 addpath(outputFolder);
 
 %% Create the distortion directories
 % Specified the path to your annotations files from train, val, or test
 % folders
-path_annotation =('./annotations_unpacked_valfull2017\matFiles');
+path_annotation =('./annotations_unpacked\annotations_unpacked\matFiles');
 addpath(path_annotation);
 
 %% Specific directories for haze and rain sources
@@ -45,19 +45,19 @@ rain_img = "rain_";
 rain_img2 = "rain2_";
 
 %% Scene annoatations
-load("scene_annotation_val.mat","Scene");
-load("weather_val1.mat","Rain","Haze");
+load("scene_annotation_full.mat","Scene");
+load("weather_.mat","Rain","Haze");
 
 %% Image names
-fullFileName = fullfile(pwd, 'ImageList_val.txt');
+fullFileName = fullfile(pwd, 'ImageList.txt');
 Image_name_list = readtable(fullFileName);
 
 %% Additional path
-Depth_location="./Depth_validation/";
+Depth_location="./Depth_train\output/";
 Depth_end="-dpt_beit_large_512.png";
 Depth_endss="-dpt_swin2_base_384.png";
 Depth_ends="-dpt_swin2_large_384.png";
-Image_location="./val2017/";
+Image_location="./train2017/";
 Image_end=".jpg";
 
 %% Define all parameters for the various distortion functions (excepted name
@@ -67,9 +67,12 @@ contrast = [0.3 0.7;0.2 0.8;0.2 1.0;0.3 0.8;0.2 0.9; 0.3 0.9;...
         0.3 1.0;0.35 0.9;0.35 1.0;0.4 0.9];
 
 Global_distortion_choice = Select_global_distortion(Scene);
-save("Global_choice_val_test.mat","Global_distortion_choice");
+save("Global_choice.mat","Global_distortion_choice");
 % load("Global_choice.mat","Global_distortion_choice");
 
+% Global_distortion_choice = Select_global_distortion(Scene,Global_distortion_choice);
+% save("Global_choice.mat","Global_distortion_choice");
+% Global_distortion_choice()
 %% Loop distortion performing
 % breaks down annotation extraction into 6 steps to not overload MATLAB capabilities
 % for id=1:size(Scene,1)
@@ -87,15 +90,16 @@ for id=1:length(Scene)
     Dimg=Image_location+Name+Image_end;
     distortion = "none";
 
-    % Check if the depth image exists
+    %Check if the depth image exists
     if (isfile(Idepth)==0)
         Idepth = Depth_location+Name+Depth_ends;
         if (isfile(Idepth)==0)
             Idepth = Depth_location+Name+Depth_endss;
         end
     end
+    
 
-    if (isfile(Data_))
+    if(isfile(Data_))
 
         if((Rain(id,1)==0) && (Haze(id,1)==0) && (Scene_annotation.weather==1))
             Scene_annotation.global=1;
@@ -107,7 +111,8 @@ for id=1:length(Scene)
         if((Rain(id,1)==0) && (Haze(id,1)==0) && (Scene_annotation.weather==1))
             Scene_annotation.global=1;
         end
-        
+
+        % Read original image
         D=imread(Dimg);                
         if(Scene_annotation.global==1)
             if(Scene_annotation.motion==1 || Scene_annotation.defocus==1)
@@ -299,50 +304,48 @@ for id=1:length(Scene)
                    end
       
             end
-            
         end
-        
-    else
-        D=imread(Dimg); 
-        choice = randi([1,5],1);
-        if(choice==1)
-                angle = randi([1 360],1);
-                len = randi([1 15],1);
-                [distortion, D] = distortion_motion_blur(D,Image_name,len,angle,outputFolder);
-        end
-
-        % Check if global defocus distortion is selected and if so apply it
-        if(choice==2)
-            gaussian_size = 9;
-            gaussian_sigma = randi([1 20],1)*0.1;
-            [distortion, D] = distortion_defocus_blur(D,Image_name,gaussian_size,gaussian_sigma,outputFolder);
-        end
-
-        % Check if noise distortion is selected and if so apply it
-        if(choice==3)
-            means = 0;
-            variance = randi([1 20],1)*0.001;
-            [distortion, D] = distortion_noise(D,Image_name,means,variance,outputFolder); 
-        end
-
-        % Check if compression distortion is selected and if so apply it
-        if(choice==4)
-            compression = randi([10 50],1);
-            [distortion, D] = distortion_compression(D,Image_name,compression,outputFolder);
-        end
-
-        % Check if contrast distortion is selected and if so apply it
-        if(choice==5)
-            cn = randi([1 10],1);
-            [distortion, D] = Global_contraste(Name, D,contrast(cn,:),outputFolder);
-        end
-         LK = [Image_name,' -- image number: '];
-        LK1 = [num2str(id),' -- distortion: '];
-        LK2 = [ distortion,' '];
-        displays= [ LK LK1 LK2];
-        disp(displays)
-        saving(id).Name=Name;
-        saving(id).Distortion=distortion;
+        else
+            D=imread(Dimg); 
+            choice = randi([1,5],1);
+            if(choice==1)
+                    angle = randi([1 360],1);
+                    len = randi([1 15],1);
+                    [distortion, D] = distortion_motion_blur(D,Image_name,len,angle,outputFolder);
+            end
+    
+            % Check if global defocus distortion is selected and if so apply it
+            if(choice==2)
+                gaussian_size = 9;
+                gaussian_sigma = randi([1 20],1)*0.1;
+                [distortion, D] = distortion_defocus_blur(D,Image_name,gaussian_size,gaussian_sigma,outputFolder);
+            end
+    
+            % Check if noise distortion is selected and if so apply it
+            if(choice==3)
+                means = 0;
+                variance = randi([1 20],1)*0.001;
+                [distortion, D] = distortion_noise(D,Image_name,means,variance,outputFolder); 
+            end
+    
+            % Check if compression distortion is selected and if so apply it
+            if(choice==4)
+                compression = randi([10 50],1);
+                [distortion, D] = distortion_compression(D,Image_name,compression,outputFolder);
+            end
+    
+            % Check if contrast distortion is selected and if so apply it
+            if(choice==5)
+                cn = randi([1 10],1);
+                [distortion, D] = Global_contraste(Name, D,contrast(cn,:),outputFolder);
+            end
+             LK = [Image_name,' -- image number: '];
+            LK1 = [num2str(id),' -- distortion: '];
+            LK2 = [ distortion,' '];
+            displays= [ LK LK1 LK2];
+            disp(displays)
+            saving(id).Name=Name;
+            saving(id).Distortion=distortion;
     end
 
 %     LK = [Image_name,' -- image number: '];
@@ -354,8 +357,9 @@ for id=1:length(Scene)
 %     saving(id).Distortion=distortion;
     
 end
+% end
 time=toc
-save('dist_data_val_test.mat','Global_distortion_choice');
+save('dist_data.mat','saving','Global_distortion_choice');
 % Analyze distortion distribution
 
 

@@ -1,3 +1,19 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Function to apply rain phenomena to an image source
+%% Copyright (c) 2023, AYMAN BEGHDADI
+%% All rights reserved.
+%% Author: Ayman Beghdadi
+%% Email: aymanaymar.beghdadi@univ-evry.fr
+%% Date: January 2023
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Function parameters:
+% D: Original image.
+% Name: name of the new distorted image.
+% I: Depth image.
+% Rain: fog mask image.
+% data : groundtruth annotations (label, mask, bounding boxe)
+% alpha : mask application factor
+% outputFolder: directory where are writted the new distorted image.
 function [distortion, imG_back] = Global_rain(Name,D,I,Rain,data,alpha,outputFolder)
 addpath('./Distortions functions');
 addpath('./Defocus local functions');

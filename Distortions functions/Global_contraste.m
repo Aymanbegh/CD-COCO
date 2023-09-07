@@ -1,3 +1,16 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Function to apply contrast changing to an image source
+%% Copyright (c) 2023, AYMAN BEGHDADI
+%% All rights reserved.
+%% Author: Ayman Beghdadi
+%% Email: aymanaymar.beghdadi@univ-evry.fr
+%% Date: January 2023
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Function parameters:
+% D: Original image.
+% name: name of the new distorted image.
+% contrast: contrast factor that adjusts image intensity values.
+% outputFolder: directory where are writted the new distorted image.
 function [distortion, imG_out] = Global_contraste(Name, D,contrast,outputFolder)
     addpath('./Distortions functions');  
     Image_end=".jpg";

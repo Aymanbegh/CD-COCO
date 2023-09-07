@@ -1,3 +1,18 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Function to apply haze phenomena to an image source
+%% Copyright (c) 2023, AYMAN BEGHDADI
+%% All rights reserved.
+%% Author: Ayman Beghdadi
+%% Email: aymanaymar.beghdadi@univ-evry.fr
+%% Date: January 2023
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Function parameters:
+% D: Original image.
+% Name: name of the new distorted image.
+% I: Depth image.
+% Haze: fog mask image.
+% alpha : mask application factor
+% outputFolder: directory where are writted the new distorted image.
 function [distortion, imG_out] = Global_haze(Name,D,I,Haze,alpha,outputFolder)
 addpath('./Distortions functions');
 
