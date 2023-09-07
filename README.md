@@ -70,11 +70,10 @@ Distortions are applied to 2 sets from the MS-COCO 2017 dataset => train (95K im
 
 
 - **Distortion generation**: run the following matlab functions
-
-    %% Matlab script to launch the distorted training set
-    Main_application_train.m
-    %% Matlab script to launch the distorted validation set
-    Main_application_validation.m  
+    - %% Matlab script to launch the distorted training set
+    - Main_application_train.m
+    - %% Matlab script to launch the distorted validation set
+    - Main_application_validation.m  
  
          
 Training results [Previous work](https://github.com/Aymanbegh/Benchmarking-performance#overview)
