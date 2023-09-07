@@ -89,7 +89,7 @@ Distortions are applied to 2 sets from the MS-COCO 2017 dataset => train (95K im
 - Place in the main directory the annotations of the instances downloaded in Matlab format (training and validation sets)
 - **Download the depth images of the training and validation sets and extract them into the main depository**:
     - https://drive.google.com/drive/folders/1PDlCD63W8myRbsaJTRjwYBVlt8X2uwaA?usp=sharing    (training)
-    - https://drive.google.com/drive/folders/1PDlCD63W8myRbsaJTRjwYBVlt8X2uwaA?usp=sharing    (validation)  
+    - [https://drive.google.com/drive/folders/1PDlCD63W8myRbsaJTRjwYBVlt8X2uwaA?usp=sharing](https://drive.google.com/file/d/1hYL2Kkia3LItRurtV7Ks05sMtAk20IOK/view?usp=sharing)   (validation)  
 
 
 - **Distortion generation**: run the following matlab functions
