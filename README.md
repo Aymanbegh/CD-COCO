@@ -54,8 +54,7 @@ Image Distortions
       
 ![rain](https://github.com/Aymanbegh/CD-COCO/assets/80038451/80fa69bb-2051-4757-8b38-1c6782b236e8)
 
-
-    - **Photorealistic haze**
+- **Photorealistic haze**  
 
 ![haze](https://github.com/Aymanbegh/CD-COCO/assets/80038451/35ef6ce2-3776-462d-905e-804cd5a9d73d)
 
