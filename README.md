@@ -31,13 +31,22 @@ Image Distortions
 -----------------------------------
 
 - **Global distortions**: affect the image as a whole and come from different sources related in general to the acquisition conditions. Some are directly dependent on the physical characteristics of the camera and are of photometric or geometric origin. Among the most common distortions that affect the quality of the signal are defocusing blur, photon noise, geometric or chromatic aberrations, and blur due to the movement of the camera or the movement of objects. The other types of degradation are related to the environment and more particularly the lighting in the case of outdoor scenes. Compression and image transmission artifacts are another source of degradation that is difficult to control. These common distortions have been already considered in benchmarking the performance of some models.
-![image](https://user-images.githubusercontent.com/80038451/153573038-0f42a475-05d4-402e-9e8f-932b54e2919a.png)
+![global](https://github.com/Aymanbegh/CD-COCO/assets/80038451/ca397e8b-13e9-4f95-abe7-9c6d546e8389)
 
 - **Local distortions**: are undesirable signals affecting one or more localized areas in the image (see figure 1). A typical case is the blurring due to the movement of an object of relatively high speed. Another photometric distortion is the appearance of a halo around the object contours due to the limited sensitivity of the sensors or backlight illumination (BI). The artistic blur affecting a particular part of the targeted scene, the object to be highlighted by the pro-shooter, is another type of local distortion. Thus, integrating the local distortions in the database increases its size and makes it richer and more representative of scenarios close to real applications which improves the relevance of trained models.
-![image](https://user-images.githubusercontent.com/80038451/153571907-c17dec87-0999-437a-bd00-92d6d3f730f8.png)
+    - **Local motion blur**: motion blur applied to object
+![motion](https://github.com/Aymanbegh/CD-COCO/assets/80038451/73ba9bc4-4d6c-494a-ab10-7370487b62ad)
+    - **Local defocus blur**: defocus blur adapted to thescene depth
+![defocus](https://github.com/Aymanbegh/CD-COCO/assets/80038451/2ac45c1b-9d86-4d59-b8b7-3a5171ef19e8)
+    - **Local backlight illumination**: contrast changing to objects related to backlight illumination
+![back](https://github.com/Aymanbegh/CD-COCO/assets/80038451/c19885be-fa85-485f-b14b-7739fa0e1b2a)
+
 
 - **Atmospheric distortions**: correspond to image acquisition for environments with particular atmospheric conditions such as rain and fog. We propose a new approach that applies masks of these atmospheric phenomena in a photorealistic way, taking into account the context of the scene (depth, object position,etc.).
-![image](https://user-images.githubusercontent.com/80038451/153571907-c17dec87-0999-437a-bd00-92d6d3f730f8.png)
+    - **Photorealistic rain**
+![rain](https://github.com/Aymanbegh/CD-COCO/assets/80038451/80fa69bb-2051-4757-8b38-1c6782b236e8)
+    - **Photorealistic haze**
+![haze](https://github.com/Aymanbegh/CD-COCO/assets/80038451/35ef6ce2-3776-462d-905e-804cd5a9d73d)
 
 Requirements
 -----------------------------------
