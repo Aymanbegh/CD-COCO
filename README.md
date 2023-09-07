@@ -38,7 +38,7 @@ Image Distortions
 
 Requirements
 -----------------------------------
-- **MATLAB R2021a**
+- **MATLAB R2021a or higher**
 - **MS-COCO dataset: validation and train sets (corresponding images and instances annotations)**
     - https://cocodataset.org/#download  
 - **Instances annotations converted in a Matlab matrix to generate CD-COCO dataset:**
@@ -56,44 +56,25 @@ Distorted dataset generation
 -----------------------------------
 Distortions are applied to 2 sets from the MS-COCO 2017 dataset => train (95K images) and validation (5K images) sets. 23K images are dedicated for the test set.
 **You generate yourself your CD-COCO distorted dataset for the train and evaluation sets thanks to the following functions. Otherwise, you can download directly download our distorted dataset: (train set: GB) and (validation set: GB)**
+**Follow the following instructions:**
+- **Download the main directory from this depository**
+- **Create the following folders**:
+    - train2017: it contains the training set images from the COCO dataset
+    - val2017: it contains the validation set images from the COCO dataset
+    - train2017_distorted: it will contain the generated training set images
+    - val2017_distorted: it will contain the generated validation set images
+- Place in the main directory the annotations of the instances downloaded in Matlab format (training and validation sets)
+- **Download the depth images of the training and validation sets**:
+    - https://drive.google.com/drive/folders/1PDlCD63W8myRbsaJTRjwYBVlt8X2uwaA?usp=sharing    (training)
+    - https://drive.google.com/drive/folders/1PDlCD63W8myRbsaJTRjwYBVlt8X2uwaA?usp=sharing    (validation)  
 
-**Download the Rain and Haze images sources to generate these distortion**: https://drive.google.com/drive/folders/1PDlCD63W8myRbsaJTRjwYBVlt8X2uwaA?usp=sharing  
-Paths to directories from the main script need to be modified in order to indicate the correct paths for the image source, the annotations sources and the desired output directories.
 
-- **Distortion generation**: First, change the following folders pathes in the **Main_application.m** file with yours: 
+- **Distortion generation**: run the following matlab functions
 
-    %% Paths to directories
-    %Path to train/validation set images from COCO 2017
-    imgtrain_path='C:\Users\beghd\OneDrive\Bureau\Dataset\COCO\train2017';
-    %Path to train/validation set annotations from COCO 2017
-    path_annotation =('C:\Users\beghd\OneDrive\Bureau\Dataset\COCO\annotations_unpacked\annotations_unpacked\matFiles');
-    %Path to output directory where distortions are generated
-    outputFolder='C:\Users\beghd\OneDrive\Bureau\Dataset\COCO\train2017_distorted/';
-    %Path to depth directory:
-    Depth_location="C:\Users\beghd\OneDrive\Bureau\Dataset\COCO\Depth_train\output/";
-    %Path to the rain masks to apply for the rain distortion
-    rainFolder=('C:\Users\aymanaymar.beghdadi\Desktop\Distortions\video extraction\rain6/');
-    %Path to the haze masks to apply for the haze distortion
-    hazeFolder=('C:\Users\aymanaymar.beghdadi\Desktop\Distortions\video extraction\fog1/');
-
-Select the adapted matlab annotation file (find in foler Annotation):
-load("scene_anntotation.mat","Scene");
-
-    
-To generate the desired distortion, comment or uncomment the lines of functions in the "main.m" script:
-
-    %% Call of functions
-    dist_defocus(imgval_path,path_annotation,outputFolder);
-    dist_haze(imgval_path,path_annotation,outputFolder,hazeFolder);
-    dist_motion(imgval_path,path_annotation,outputFolder);
-    dist_rain(imgval_path,path_annotation,outputFolder,rainFolder);
-    dist_object_motion(imgval_path,path_annotation,outputFolder);
-    dist_object_illum(imgval_path,path_annotation,outputFolder);
-    dist_object_defocus(imgval_path,path_annotation,outputFolder);
-    dist_compression(imgval_path,path_annotation,outputFolder);
-    dist_contraste(imgval_path,path_annotation,outputFolder);
-    dist_noise(imgval_path,path_annotation,outputFolder);
-    
+    %% Matlab script to launch the distorted training set
+    Main_application_train.m
+    %% Matlab script to launch the distorted validation set
+    Main_application_validation.m  
  
          
 Training results [Previous work](https://github.com/Aymanbegh/Benchmarking-performance#overview)
