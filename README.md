@@ -198,3 +198,15 @@ Previous work
 
 
 Use this BibTeX to cite the corresponding paper:
+
+
+@INPROCEEDINGS{10323035,
+  author={Beghdadi, Ayman and Beghdadi, Azeddine and Mallem, Malik and Beji, Lotfi and Cheikh, Faouzi Alaya},
+  booktitle={2023 11th European Workshop on Visual Information Processing (EUVIP)}, 
+  title={CD-COCO: A Versatile Complex Distorted COCO Database for Scene-Context-Aware Computer Vision}, 
+  year={2023},
+  volume={},
+  number={},
+  pages={1-6},
+  doi={10.1109/EUVIP58404.2023.10323035}}
+
