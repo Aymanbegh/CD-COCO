@@ -72,7 +72,7 @@ Requirements
     - **(annotation train set):** https://drive.google.com/file/d/1JrI2JML5D8koexqi2AnlB0_QFariFfbY/view?usp=sharing
     - **(validation set):** https://drive.google.com/file/d/1aY3kXbH_HRu7YK7JfmnK4Xho5ToSxnkQ/view?usp=sharing
     - **(annotation validation set):** https://drive.google.com/file/d/1ju3Td425OTyvyCDonQnWGHDdXmF8aumE/view?usp=sharing
-    - **(Local server for all data):** https://www.l2ti.univ-paris13.fr/VSQuad/CD-COCO_ICIP2023_Challenge/ 
+    - **(Local server for all data, in particular test set images):** https://www.l2ti.univ-paris13.fr/VSQuad/CD-COCO_ICIP2023_Challenge/ 
 
 
 Distorted dataset generation 
@@ -103,6 +103,7 @@ Evaluate your performance
 -----------------------------------
 
 Follow the instructions below to evaluate the performance of your model with the CD-COCO database:
+
 (1) Create an account on CodaLab. This will allow you to participate in all CD-COCO challenges [https://codalab.lisn.upsaclay.fr/competitions/9981](https://codalab.lisn.upsaclay.fr/competitions/9981).
 
 (2) Carefully review the guidelines for entering the CD-COCO challenges and using the test sets.
