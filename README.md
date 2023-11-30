@@ -96,7 +96,18 @@ Distortions are applied to 2 sets from the MS-COCO 2017 dataset => train (95K im
     - %% Matlab script to launch the distorted training set
     - Main_application_train.m
     - %% Matlab script to launch the distorted validation set
-    - Main_application_validation.m  
+    - Main_application_validation.m
+ 
+
+Evaluate your performance
+-----------------------------------
+
+Follow the instructions below to evaluate the performance of your model with the CD-COCO database:
+(1) Create an account on CodaLab. This will allow you to participate in all CD-COCO challenges [https://codalab.lisn.upsaclay.fr/competitions/9981](https://codalab.lisn.upsaclay.fr/competitions/9981).
+
+(2) Carefully review the guidelines for entering the CD-COCO challenges and using the test sets.
+
+(3) Prepare a JSON file containing your results in the correct results format for the challenge you wish to enter. Please name your JSON file "predict" and use it for the "Final evaluation Phase".
  
          
 Training results [Previous work](https://github.com/Aymanbegh/Benchmarking-performance#overview)
